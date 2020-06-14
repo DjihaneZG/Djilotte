@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Coeurnica_Coeur pur ?</title>
+    <link href="https://img.icons8.com/dusk/64/000000/unicorn.png" rel="shortcut icon">
+
+    <link rel="stylesheet" href="test_style.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+
+
+
+        <!--------------- navbar --------------->
+
+
+
+
+        <nav>
+            <label for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle" />
+            <div class="menu">
+                <a href="index.html">Accueil</a>
+                <a href="mythe.html">Un mythe ?</a>
+                <a href="etreunelicorne.html">Etre une licorne </a>
+                <a href="atoideJouer.html">A toi de jouer</a>
+                <a href="team.html">Qui sommes-nous</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+
+
+            <div class="logo">
+                <span id="brand">
+            <img src="https://img.icons8.com/dusk/64/000000/unicorn.png" id="logo"/>
+                    <a href="index.html" id="lien_index">Coeurnica</a>
+              </span>
+            </div>
+        </nav>
+    </div>
+    <!--------------- articles --------------->
+
+    <div class="test-section">
+
+        <h2 id="titre_test" style="text-align:center">Avez vous le coeur pur ? Faites le test...</h2>
+    </div>
+
+    <form id="form">
+
+        <section class="form">
+
+            <!----Prenom---->
+            <div class="inputs" id="wierd">
+                <input type="text" id="prenom" name="user_prenom" value="" placeholder="Prenom" required>
+            </div>
+
+
+
+            <!----Genre----->
+            <div class="inputs">
+                <select name="user_genre" id="genre">
+                    <option value="0" required>Genre</option>
+                    <option value="Homme" required>Homme</option>
+                    <option value="Femme" required>Femme</option>
+                </select>
+            </div>
+            <!----Age---->
+            <div class="inputs">
+                <input type="text" id="age" name="user_age" value="" placeholder="Age" required>
+            </div>
+
+            <!----Aimez-vous la pizza à l’ananas ? ----->
+            <div class="inputs">
+                <select name="user_ananas" id="ananas">
+                                <option value="0" required>Aimez-vous la pizza à l’ananas ?</option>
+                                <option value="Oui" required>Oui</option>
+                                <option value="Non" required>Non</option>
+                            </select>
+            </div>
+
+
+            <!----Aimez-vous la pizza au poivron ?----->
+            <div class="inputs">
+                <select name="user_poivron" id="poivron">
+                                <option value="0" required>Aimez-vous la pizza au poivron ?</option>
+                                <option value="Oui" required>Oui</option>
+                                <option value="Non" required>Non</option>
+                            </select>
+            </div>
+
+            <!----Comment interprétez-vous la disparition d’une chaussette ? ----->
+            <div class="inputs">
+                <select name="user_chaussette" id="chaussette">
+                                <option value="0" required>Comment interprétez-vous la disparition d’une chaussette ?</option>
+                                <option value="1" required>La manifestation de la LRI</option>
+                                <option value="2" required>Vous avez sans doutes oublié de la mettre à laver</option>
+                                <option value="3" required>Vous l’avez fait tomber quelque part</option>
+                            </select>
+            </div>
+            <!----Qui est le plus fort ? ----->
+            <div class="inputs">
+                <select name="user_fort" id="fort">
+                                <option value="0" required>Qui est le plus fort ?</option>
+                                <option value="1" required>La LRI</option>
+                                <option value="2" required>Le très furtif pégase bordeaux</option>
+                                <option value="3" required>L’huitre violette de la damnation </option>
+             </select>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <button type="submit" id="searchButton">Rechercher</button>
+            </div>
+            <div>
+                <button type="reset" id="resetButton">Tout supprimer</button>
+            </div>
+        </section>
+
+
+
+    </form>
+
+
+
+
+
+    <div class="conteneur-flexible" id="resultat">
+        <div class="scroll_image" id="test_coeur">
+            <div id="results"></div>
+        </div>
+        <div class="scroll_text">
+            <div class="text_container" id="text">
+                <h1>Avez-vous le coeur pur ?</h1>
+                <p>Oh vous avez <span id="old"></span> ans... L'age parfait pour entrer dans l'armée de Sa Roseur ! <span id="gender"></span> <span id="pizzaa"></span></p> <span id="pizzap"></span> <span id="chauss"></span> <span id="frt"></span> <span id="coeur"></span></p>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <section class="footer_main">
+            <div class="footer_column">
+                <h2 class="footer_column_title">Adresse</h2>
+
+                <p>Coeurnica</p>
+                <h4>30-32 Avenue de l'utopie</h4>
+                <h4>Villejuif</h4>
+                <h4>94800</h4>
+            </div>
+            <div class="footer_column">
+                <h2 class="footer_column_title">Nos articles</h2>
+                <ul>
+                    <li><a href="mythe.html">Un mythe ?</a></li>
+                    <li><a href="etreunelicorne.html">Etre une licorne</a></li>
+                    <li><a href="atoideJouer.html">A toi de jouer</a></li>
+                    <li><a href="test_coeur.html">As-tu le coeur pur ?</a></li>
+                </ul>
+            </div>
+            <div class="footer_column">
+                <h2 class="footer_column_title">Une question</h2>
+                <ul>
+                    <li><a href="team.html">Qui sommes-nous</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+        </section>
+
+
+        <section class="footer_media">
+            <ul class="footer_media-list">
+                <li><a href="https://www.facebook.com/"><i class="facebook"><img src="https://img.icons8.com/nolan/43/facebook-new.png"/></i></a></li>
+                <li><a href="https://twitter.com/"><i class="twitter"><img src="https://img.icons8.com/nolan/43/twitter.png"/></i></a></li>
+                <li><a href="https://www.instagram.com/"><i class="instagram"><img src="https://img.icons8.com/nolan/43/instagram-new.png"/></i></a></li>
+                <li><a href="https://www.youtube.com/"><i class="youtube"><img src="https://img.icons8.com/nolan/43/youtube.png"/></i></a></li>
+            </ul>
+        </section>
+
+
+
+    </footer>
+
+    <script>
+        var buttonSearch = document.querySelector("#searchButton");
+        var buttonReset = document.querySelector("#resetButton");
+        buttonReset.addEventListener('click', deleteAll);
+
+        function deleteAll() {
+            document.location.reload();
+        }
+        //on garde la section des réponses caché
+        document.getElementById("resultat").style.display = 'none';
+        document.getElementById("wierd").style.display = 'none';
+        buttonSearch.onclick = function() {
+
+            var Age = document.getElementById("age").value;
+            var Genre = document.getElementById("genre").value;
+            var Pizza_ananas = document.getElementById("ananas").value;
+            var Pizza_poivron = document.getElementById("poivron").value;
+            var Chaussette = document.getElementById("chaussette").value;
+            var Fort = document.getElementById("fort").value;
+            if (Age == "" || Genre == "0" || Pizza_ananas == "0" || Pizza_poivron == "0" || Chaussette == "0" || Fort == "0") {
+
+                alert("Vous avez oublié d'entrer des informations");
+
+
+            } else {
+                //on affiche la section des réponses
+                document.getElementById("resultat").style.display = '';
+                var result = Age;
+                document.getElementById('old').textContent = result;
+                if (Genre == "Homme") {
+                    var g = "Malheuresement il semblerai que vous soyez un homme..la licorne a décidé que vous n’êtiez pas apte à la rencontrer"
+                    document.getElementById('gender').textContent = g;
+                } else {
+
+
+                    if (Pizza_ananas == "Non") {
+                        var pa = "Vous devriez avoir honte. Comment est ce possible ? Peu importe, tout le monde sait que seule l'elite aime la pizza à l'ananas. La licorne a décidé que vous n’êtiez pas apte à la rencontrer"
+                        document.getElementById('pizzaa').textContent = pa;
+                    } else {
+
+                        if (Pizza_poivron == "Oui") {
+                            var pp = "Sacrilège ! Vous avouez aimer la pizza au poivron...la licorne a décidé que vous n’êtiez pas apte à la rencontrer."
+                            document.getElementById('pizzap').textContent = pp;
+                        } else {
+
+                            if (Chaussette != "1") {
+                                var c = "C'est fou comme vous etes naive...Vos chaussette disparaisse à cause de la LRI, soyez en conscient. Il semblerai qu vous n'ayez pas un coeur assez pur pour rencontrer la licorne."
+                                document.getElementById('chauss').textContent = c;
+                            } else {
+
+                                if (Fort != "1") {
+                                    var f = "Voyons tout le monde sais que la LRI surpasse tout le monde. Il semblerai qu vous n'ayez pas un coeur assez pur pour rencontrer la licorne."
+                                    document.getElementById('frt').textContent = f;
+                                } else {
+                                    var pur = "Incroyable ! Vous etes l'elue ! Vous avez le coeur assez pur pour rencontrer Sa Roseur. Bravo à vous ! Sechez vos larmes, calmez-vous voyons."
+                                    document.getElementById('coeur').textContent = pur;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+    </script>
+
+</body>
+
+
+
+</html>

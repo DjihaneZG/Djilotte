@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Coeurnica_A toi de jouer</title>
+    <link href="https://img.icons8.com/dusk/64/000000/unicorn.png" rel="shortcut icon">
+    <link rel="stylesheet" href="jeu_style.css">
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+
+
+        <!--------------- navbar --------------->
+
+
+
+
+        <nav>
+            <label for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle" />
+            <div class="menu">
+                <a href="index.html">Accueil</a>
+                <a href="#mythe">Un mythe ?</a>
+                <a href="#etreunelicorne">Etre une licorne </a>
+                <a href="atoidejouer.html">A toi de jouer</a>
+                <a href="team.html">Qui sommes-nous</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+
+
+            <div class="logo">
+                <span id="brand">
+            <img src="https://img.icons8.com/dusk/64/000000/unicorn.png" id="logo"/>
+                    <a href="index.html" id="lien_index">Coeurnica</a>
+              </span>
+            </div>
+        </nav>
+
+    </div>
+
+
+
+
+
+    <div id="quiz"></div>
+    <button id="submit">Envoyer</button>
+    <button id="reset">Recommencer</button>
+
+
+
+
+    <div class="conteneur-flexible" id="reponses">
+        <div class="scroll_image" id="unicorn-toy">
+            <div id="results"></div>
+        </div>
+
+        <div class="scroll_text">
+            <div class="text_container">
+                <h1>Resultats</h1>
+                <div class="badEnd-container" id="BadEnd"></div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <footer>
+        <section class="footer_main">
+            <div class="footer_column">
+                <h2 class="footer_column_title">Adresse</h2>
+
+                <p>Coeurnica</p>
+                <h4>30-32 Avenue de l'utopie</h4>
+                <h4>Villejuif</h4>
+                <h4>94800</h4>
+            </div>
+            <div class="footer_column">
+                <h2 class="footer_column_title">Nos articles</h2>
+                <ul>
+                    <li><a href="mythe.html">Un mythe ?</a></li>
+                    <li><a href="etreunelicorne.html">Etre une licorne</a></li>
+                    <li><a href="atoideJouer.html">A toi de jouer</a></li>
+                    <li><a href="test_coeur.html">As-tu le coeur pur ?</a></li>
+                </ul>
+            </div>
+            <div class="footer_column">
+                <h2 class="footer_column_title">Une question</h2>
+                <ul>
+                    <li><a href="team.html">Qui sommes-nous</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+        </section>
+
+
+        <section class="footer_media">
+            <ul class="footer_media-list">
+                <li><a href="https://www.facebook.com/"><i class="facebook"><img src="https://img.icons8.com/nolan/43/facebook-new.png"/></i></a></li>
+                <li><a href="https://twitter.com/"><i class="twitter"><img src="https://img.icons8.com/nolan/43/twitter.png"/></i></a></li>
+                <li><a href="https://www.instagram.com/"><i class="instagram"><img src="https://img.icons8.com/nolan/43/instagram-new.png"/></i></a></li>
+                <li><a href="https://www.youtube.com/"><i class="youtube"><img src="https://img.icons8.com/nolan/43/youtube.png"/></i></a></li>
+            </ul>
+        </section>
+
+
+
+    </footer>
+
+
+    <script>
+        function createQuiz() {
+            //on cache la div des réponses (on l'affichera une fois que l'ulisateur aura fini le quizz)
+            document.getElementById("reponses").style.display = 'none';
+            const que_ans = [];
+
+            //pour chaque question on récupère les réponses possibles et la question en elle meme
+            myQuestions.forEach(
+                (currentQuestion, questionNumber) => {
+
+                    //liste des réponses possibles
+                    const answers = [];
+
+                    //on parcours les réponse possible (a,b,c...)
+                    for (letter in currentQuestion.answers) {
+
+                        //on crée l'input pour la réponse
+                        answers.push(
+                            `<label>
+      <input type="radio" name="question${questionNumber}" value="${letter}">
+      ${letter} :
+      ${currentQuestion.answers[letter]}
+    </label>`
+                        );
+                    }
+
+                    //Ajout des réponse possible et de la question au tableau que_ans
+                    que_ans.push(
+                        `<div class="question"> ${currentQuestion.question} </div>
+  <div class="answers"> ${answers.join('')} </div>`
+                    );
+                }
+            );
+            console.log(que_ans)
+            quizContainer.innerHTML = que_ans.join('');
+
+
+        }
+
+        function showResults() {
+
+            const answerContainers = quizContainer.querySelectorAll('.answers');
+            const BadAns = [];
+            let nbCorrect = 0;
+
+
+            myQuestions.forEach((currentQuestion, questionNumber) => {
+                console.log("question number :", questionNumber);
+                //on récupère la réponse donnée par l'utilisateur
+                const answerContainer = answerContainers[questionNumber];
+                const selector = `input[name=question${questionNumber}]:checked`;
+                const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+                // SI Réponse correcte
+                if (userAnswer === currentQuestion.correctAnswer) {
+
+                    console.log("Question", questionNumber + 1, " vous avez choisi la bonne réponse :", userAnswer);
+
+                    nbCorrect++;
+
+
+                    answerContainers[questionNumber].style.color = 'lightgreen';
+                }
+
+                // SI Réponse incorrecte ou non spécifié
+                else {
+                    console.log("Question", questionNumber + 1, " vous avez choisi la mauvaise réponse :", userAnswer);
+
+                    answerContainers[questionNumber].style.color = 'red';
+
+                    //on stock la mauvaise réponse dans une array
+                    BadAns.push(questionNumber);
+
+
+                }
+                console.log("LES MAUVAISES REP:", BadAns);
+            });
+
+            resultsContainer.innerHTML = `${nbCorrect} bonne(s) réponse(s) sur ${myQuestions.length}`;
+
+            //==============================================BadEND================================================
+            //on parcours la table des mauvaises réponses
+            BadAns.forEach(
+                (currentBadAns, BadAnsNumber) => {
+
+
+                    const bad = [];
+
+
+                    // Pour chaque mauvaise réponse on crée  une div ou l'on affiche la bad end corréspondante
+
+
+                    BadEnds.forEach(
+                        (currentBadEnd, BadEndNumber) => {
+                            const answerContainers = quizContainer.querySelectorAll('.answers');
+
+                            if (BadAns[BadAnsNumber] == BadEndNumber) {
+                                console.log(currentBadEnd.Q);
+                                var badEndContainer = document.getElementById("BadEnd");
+                                var newEnd = document.createElement("div");
+                                newEnd.appendChild(document.createTextNode(currentBadEnd.Q));
+
+                                badEndContainer.appendChild(newEnd);
+
+                            }
+
+                        }
+                    );
+
+
+                }
+            );
+            //Si toutes les réponses sont correctes
+            if (nbCorrect == myQuestions.length) {
+                console.log("Toutes les réponse sont correct, c'est un sans faute");
+                var badEndContainer = document.getElementById("BadEnd");
+                var newEnd = document.createElement("div");
+                newEnd.appendChild(document.createTextNode("Bravo, c'est un sans faute ! Vous etes digne d'entrer dans l'armée de Sa Roseur."));
+
+                badEndContainer.appendChild(newEnd);
+
+            }
+            //Si toutes les réponses sont incorrectes
+            if (nbCorrect == 0) {
+                var badEndContainer = document.getElementById("BadEnd");
+                var newEnd = document.createElement("div");
+                newEnd.appendChild(document.createTextNode("C'est une honte, concentrez vous !"));
+
+                badEndContainer.appendChild(newEnd);
+
+            }
+            //Affichage de la partie réponses (résultat obtenue une fois le quizz complété)
+            document.getElementById("reponses").style.display = '';
+        }
+
+
+
+        const quizContainer = document.getElementById('quiz');
+        const resultsContainer = document.getElementById('results');
+        const submitButton = document.getElementById('submit');
+        const resetButton = document.getElementById('reset');
+        //Tableau où sont stocké les questions, les choix de réponses proposées à l'utilisateur ainsi que la véritable bonne réponse
+        const myQuestions = [{
+            question: "Q1 : De quel couleur est la licorne rose invisible ?",
+            answers: {
+                a: "Magenta",
+                b: "Rose",
+                c: "Rouge qui tire un peu vers le rose",
+                d: "Violet"
+            },
+            correctAnswer: "c"
+        }, {
+            question: "Q2 : Quel surnom est donné à la Licorne Rose Invisible ?",
+            answers: {
+                a: "Sa roseur",
+                b: "La LRI (abréviation de la licorne rose invisible)",
+                c: "Grande gardienne des chaussettes disparues"
+            },
+            correctAnswer: "a"
+        }, {
+            question: "Q3 : Qui a tenté d’usurper Sa Roseur ",
+            answers: {
+                a: "La Vif Tortue à pois rouge et rayé",
+                b: "le Très Furtif Pégase Bordeaux",
+                c: "l’Huitre violette de la damnation"
+            },
+            correctAnswer: "b"
+        }, {
+            question: "Q4 : Quelle semaine devez-vous priez « bénie soient Ses sabot » ?",
+            answers: {
+                a: "Les semaines paires",
+                b: "Les semaines impaires",
+            },
+            correctAnswer: "b"
+        }, {
+            question: "Q5 : Le jour de l’Avoine et du Foin que se passera-t ’il ?",
+            answers: {
+                a: "Les mers deviendront rose et invisible",
+                b: "Les élus disparaitront et seront rappelé à Sa Roseur en faisant la lessive de leurs chaussettes",
+                c: "L’huitre violette de la Damnation sera pardonné et retournera au service de Sa Roseur"
+            },
+            correctAnswer: "c"
+        }];
+
+
+        //Tableau où sont sockés les Bad ends, on affichera celles correspondantes aux fautes de l'utilisateur (si il en fait)
+        const BadEnds = [{
+            Q: "Q1: Comment osez-vous. J’espère pour votre personne que vous êtes daltoniens…Je me répète mais COMMENT OSEZ VOUS !!! Sérieusement c’est dans le nom quand même. Bon rentrer chez vous, allez vous reposer parce que là quand même…",
+
+        }, {
+            Q: "Q2: Espèce de faux apôtre, comment pouvez-vous vous dire suppôt de La Licorne Rose Invisible sans connaître son surnom. C’est évident quand même ! Vous avez déçu Sa Roseur. Rentrez chez vous et repenser les choix qui vont ont fait arriver là.",
+
+        }, {
+            Q: "Q3: Je vois que vous ne connaissez pas toute l’Histoire de Sa Roseur. Eh bien j’espère que vous vous souviendrez de ceci : vous êtes recalée.",
+
+        }, {
+            Q: "Q4 : Désolé mais là c’est une question de survie. Vous aviez littéralement une chance sur deux de vous en sortir et vous avez quand même échouer, on ne peut pas se permettre de combattre avec poisseux. Sinon je peux vous proposer de vous enrôler dans l’armée adverse. A défaut de nous être utile vous pourrez être inutile chez eux.",
+
+        }, {
+            Q: "Q5 : C’est décevant. Pas seulement pour moi mais pour vous aussi. Excusez-vous, demander pardon à votre mère, demander pardon à vos amis qui vous ont supporter, demander pardon à vos chaussettes. Comment pouvez-vous ne pas savoir ce qu'est le jour du Foin quand vous voulez vous enrôler dans l’armée de Sa Roseur ? ",
+
+        }];
+
+
+
+        //Fonction qui permet de recommencer 
+        function deleteAll() {
+            document.location.reload();
+        }
+
+        //Création du quizz
+        createQuiz();
+
+
+        //Bouttons et fonctionalités
+        submitButton.addEventListener('click', showResults);
+
+        resetButton.addEventListener('click', deleteAll);
+    </script>
+
+</body>
+
+</html>
